@@ -32,3 +32,21 @@ div.content {
     max-width: 800px;
 }
 
+div.img-container {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    height: 225px;
+    width: 225px;
+    margin-left: 50px;
+    text-align: center;
+    background-color: gray;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+}
+
+div.img-container img {
+
+    justify-content: center;
+    align-items: center;
+}

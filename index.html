@@ -15,6 +15,7 @@
         <label for="choix-ville">Choisissez une ville:</label>
         <select id="ville-id" name="ville" onchange="updateWeather(this.value)">
             <option value="">Sélectionnez une ville</option>
+            <option value="Vandœuvre-lès-Nancy">Vandœuvre-lès-Nancy</option>
             <option value="Gambsheim">Gambsheim</option>
             <option value="Strasbourg">Strasbourg</option>
             <option value="Paris">Paris</option>
@@ -28,7 +29,7 @@
     <!-- <h1>Météo actuelle à <span id="ville"></span></h1> -->
     <p>Température: <span id="temperature"></span> °C</p>
     <p>Description: <span id="description"></span></p>
-    <p>Humidité: <span id="description"></span></p>
+    <p>Humidité: <span id="humidite"></span></p>
 
     <div id="nebulosite">
         <h2>Nébulosité</h2>
@@ -36,13 +37,11 @@
         <ul>
             <li>Basse: <span id="nebulosite-basse"></span>%</li>
             <li>Moyenne: <span id="nebulosite-moyenne"></span>%</li>
-            <li>Haute: <span id="humidite"></span>%</li>
+            <li>Haute: <span id="nebulosite-haute"></span>%</li>
         </ul>
 
         <p>Type de nuage: <span id="type-nuage"></span></p>
     </div>
-
-
 
     <script src="script.js"></script>
 </body>

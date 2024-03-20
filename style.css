@@ -82,3 +82,37 @@ div.current-time {
 span#current-d {
     color: #9D3E02;
 }
+
+
+@media screen and (max-width: 1225px) {
+    div.img-container {
+        top: 200px;
+        right: 200px;
+        height: 300px;
+        width: 300px;
+    }
+
+    div.img-container p {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 856px) {
+    div.img-container {
+        top: 80px;
+        right: 100px;
+        height: 300px;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 770px) {
+        div.img-container {
+            top: 620px;
+            right: 50px;
+            height: 300px;
+            width: 300px;
+        }
+        
+    }
+
+}

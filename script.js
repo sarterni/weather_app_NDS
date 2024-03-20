@@ -28,6 +28,9 @@ function updateWeather(ville) {
                     weatherImage.src = "images/snow.png";
                     break;
             }
+
         })
         .catch(error => console.error(error));
 }
+const d = new Date();
+document.getElementById("current-d").innerHTML = d;

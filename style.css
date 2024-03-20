@@ -72,3 +72,12 @@ div.img-container p#text-1 {
     top: 0;
 
 }
+
+div.current-time {
+    position: absolute;
+    right: 0;
+}
+
+span#current-d {
+    color: #9D3E02;
+}

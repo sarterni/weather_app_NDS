@@ -86,7 +86,8 @@ div.current-time {
 }
 
 span#current-d {
-    color: #9D3E02;
+    color: #333;
+    font-weight: bold;
 }
 
 

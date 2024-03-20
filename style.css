@@ -27,14 +27,14 @@ div.content {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 70px;
     margin-bottom: 20px;
     max-width: 800px;
 }
 
 div.img-container {
     position: absolute;
-    top: 70px;
+    top: 150px;
     right: 400px;
     height: 300px;
     width: 300px;
@@ -75,6 +75,7 @@ div.img-container p#text-1 {
 
 div.current-time {
     position: absolute;
+    top: 0;
     right: 0;
 }
 

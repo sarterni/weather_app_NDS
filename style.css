@@ -35,7 +35,7 @@ div.content {
 div.img-container {
     position: absolute;
     top: 150px;
-    right: 400px;
+    right: 250px;
     height: 300px;
     width: 300px;
     margin-left: 50px;
@@ -91,6 +91,13 @@ span#current-d {
 }
 
 
+/* Media Queries */
+@media screen and (max-width:1920px) {
+    div.img-container {
+        right: 450px;
+    }
+}
+
 @media screen and (max-width: 1225px) {
     div.img-container {
         top: 200px;
@@ -106,15 +113,15 @@ span#current-d {
 
 @media screen and (max-width: 856px) {
     div.img-container {
-        top: 80px;
+        top: 100px;
         right: 100px;
         height: 300px;
         width: 300px;
     }
 
-    @media screen and (max-width: 770px) {
+    @media screen and (max-width: 493px) {
         div.img-container {
-            top: 620px;
+            top: 635px;
             right: 50px;
             height: 300px;
             width: 300px;

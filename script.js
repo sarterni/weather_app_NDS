@@ -9,6 +9,11 @@ function updateWeather(ville) {
             document.getElementById("description").textContent = data.weather[0].description;
             document.getElementById("nebulosite-totale").textContent = data.clouds.all; // Display total cloudiness
             document.getElementById("humidite").textContent = data.main.humidity; // Display humidity
+            document.getElementById("nebulosite-basse").textContent = data.clouds.low; // Display low cloudiness
+            document.getElementById("nebulosite-moyenne").textContent = data.clouds.mid; // Display medium cloudiness
+            document.getElementById("nebulosite-haute").textContent = data.clouds.high; // Display high cloudiness
+
+            
 
 
             const weatherImage = document.getElementById("weather-image");
@@ -19,14 +24,23 @@ function updateWeather(ville) {
                     weatherDescription.textContent = "Ciel dégagé";
                     break;
                 case "Clouds":
-                    weatherImage.src = "images/cloud.png";
+                    weatherImage.src = "description_overcast_clouds.jpg";
+                    weatherDescription.textContent = "Ciel couvert";
                     break;
                 case "Rain":
                     weatherImage.src = "images/rain.png";
                     break;
+                case "light rain":
+                    weatherImage.src = "images/rain.png";
+                    break;
+                case "moderate rain":
+                    weatherImage.src = "images/rain.png";
+                    break;
+
                 case "Snow":
                     weatherImage.src = "images/snow.png";
                     break;
+
             }
 
         })

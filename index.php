@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./icons/icon512_maskable.png" type="image/x-png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/HomePage.css?v=<?php echo filemtime('css/HomePage.css'); ?>">
     <title>Météo - Ma Ville</title>
 </head>
 
@@ -15,7 +15,7 @@
 
     <div class="current-time">
         <p>Dernière actualisation : <span id="current-d"></span></p>
-</div>
+    </div>
     <div class="content">
 
         <h1>Météo - Ma Ville</h1>
@@ -59,12 +59,16 @@
         </div>
     </div>
 
+    <footer>
+        <p>Projet réalisé par <a href="https://nicodigitalsstudio.com/">https://nicodigitalsstudio.com/</a> - 2024</p>
+        <p>Version <span>V2</span></p>
+    </footer>
 
 
 
 
 
-    <script src="script.js"></script>
+    <script src=" script.js"></script>
 </body>
 
 </html>

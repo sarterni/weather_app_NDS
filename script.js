@@ -16,6 +16,13 @@ function updateWeather(ville) {
             // document.getElementById("nebulosite-moyenne").textContent = data.clouds.mid;
             // document.getElementById("nebulosite-haute").textContent = data.clouds.high;
 
+            // Affichage des prévisions météo
+
+            document.getElementById("day1-temperature").textContent = Math.round(data.daily[1].temp.day - 273.15);
+            document.getElementById("day1-description").textContent = data.daily[1].weather[0].description;
+
+            document.getElementById("day2-temperature").textContent = Math.round(data.daily[2].temp.day - 273.15);
+
             const weatherImage = document.getElementById("weather-image");
             const weatherDescription = document.getElementById("text-2");
 

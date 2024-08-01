@@ -63,7 +63,7 @@
         <h2>Météo des prochains jours</h2>
         <div class="one-day-card-weather">
             <p class="day">Jour +1 <br> <span id="actualday-1"></span></p>
-            <p>Température: <span id="day1-temperature"></span> °C</p>
+            <p>Température: <span id="temperature-d"></span> °C</p>
             <p>Description: <span id="day1-description"></span></p>
             <p>Humidité: <span id="day1-humidite"></span>%</p>
         </div>

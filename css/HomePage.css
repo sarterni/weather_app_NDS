@@ -104,6 +104,28 @@ footer a:hover {
     text-decoration: underline red;
 }
 
+.following-days-weather-days-table {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.one-day-card-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Media Queries */
 @media screen and (max-width:1920px) {
     div.img-container {

@@ -59,6 +59,39 @@
         </div>
     </div>
 
+    <div class="following-days-weather-days-table">
+        <div class="one-day-card-weather">
+            <p class="day">Jour +1 <br> <span id="actualday-1"></span></p>
+            <p>Température: <span id="day1-temperature"></span> °C</p>
+            <p>Description: <span id="day1-description"></span></p>
+            <p>Humidité: <span id="day1-humidite"></span>%</p>
+        </div>
+        <div class="one-day-card-weather">
+            <p class="day">Jour +2 <br> <span id="actualday-2"></span></p>
+            <p>Température: <span id="day2-temperature"></span> °C</p>
+            <p>Description: <span id="day2-description"></span></p>
+            <p>Humidité: <span id="day2-humidite"></span>%</p>
+        </div>
+        <div class="one-day-card-weather">
+            <p class="day">Jour +3 <br> <span id="actualday-3"></span></p>
+            <p>Température: <span id="day3-temperature"></span> °C</p>
+            <p>Description: <span id="day3-description"></span></p>
+            <p>Humidité: <span id="day3-humidite"></span>%</p>
+        </div>
+        <div class="one-day-card-weather">
+            <p class="day">Jour +4 <br> <span id="actualday-4"></span></p>
+            <p>Température: <span id="day4-temperature"></span> °C</p>
+            <p>Description: <span id="day4-description"></span></p>
+            <p>Humidité: <span id="day4-humidite"></span>%</p>
+        </div>
+        <div class="one-day-card-weather">
+            <p class="day">Jour +5 <br> <span id="actualday-5"></span></p>
+            <p>Température: <span id="day5-temperature"></span> °C</p>
+            <p>Description: <span id="day5-description"></span></p>
+            <p>Humidité: <span id="day5-humidite"></span>%</p>
+        </div>
+    </div>
+
     <footer>
         <p>Projet réalisé par <a href="https://nicodigitalsstudio.com/">https://nicodigitalsstudio.com/</a> - 2024</p>
         <p>Version <span>V2</span></p>

@@ -51,3 +51,23 @@ function updateWeather(ville) {
 // Mise à jour de la date actuelle
 const d = new Date();
 document.getElementById("current-d").innerHTML = d;
+
+const nextDay = new Date();
+nextDay.setDate(d.getDate() + 1);
+document.querySelector("span#actualday-1").innerHTML = `${nextDay.getDate()} ${nextDay.toLocaleString('default', { month: 'long' })} ${nextDay.getFullYear()}`;
+
+const nextDay2 = new Date();
+nextDay2.setDate(d.getDate() + 2);
+document.querySelector("span#actualday-2").innerHTML = `${nextDay2.getDate()} ${nextDay2.toLocaleString('default', { month: 'long' })} ${nextDay2.getFullYear()}`;
+
+const nextDay3 = new Date();
+nextDay3.setDate(d.getDate() + 3);
+document.querySelector("span#actualday-3").innerHTML = `${nextDay3.getDate()} ${nextDay3.toLocaleString('default', { month: 'long' })} ${nextDay3.getFullYear()}`;
+
+const nextDay4 = new Date();
+nextDay4.setDate(d.getDate() + 4);
+document.querySelector("span#actualday-4").innerHTML = `${nextDay4.getDate()} ${nextDay4.toLocaleString('default', { month: 'long' })} ${nextDay4.getFullYear()}`;
+
+const nextDay5 = new Date();
+nextDay5.setDate(d.getDate() + 5);
+document.querySelector("span#actualday-5").innerHTML = `${nextDay5.getDate()} ${nextDay5.toLocaleString('default', { month: 'long' })} ${nextDay5.getFullYear()}`;

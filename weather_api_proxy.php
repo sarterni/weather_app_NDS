@@ -9,6 +9,8 @@ $ville = $_GET['ville'];
 
 // Étape 4: Construire l'URL de l'API
 $url = "https://api.openweathermap.org/data/2.5/weather?q=" . urlencode($ville) . "&appid=" . $apiKey;
+$url = "https://api.openweathermap.org/data/2.5/forecast?q=" . urlencode($ville) . "&appid=" . $apiKey;
+
 
 // Étape 5: Faire la requête à l'API
 $response = file_get_contents($url);
@@ -18,4 +20,3 @@ header('Content-Type: application/json');
 echo $response;
 
 ?>
-

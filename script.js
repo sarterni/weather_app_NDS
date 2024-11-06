@@ -18,14 +18,15 @@ function updateWeather(ville) {
 
             // Affichage des prévisions météo
             const forecast = data.daily;
-            // Affichage de la température du jour suivant
-            
+
             // Affichage de la température du lendemain
-            if (forecast && forecast.length > 0) {
-                document.getElementById("temperature-d").textContent = Math.round((forecast[1]?.temp?.day ?? 0) - 273.15);
+            if (forecast && forecast.length > 1) { // Vérifier qu'il y a au moins deux jours de prévisions
+                const temperatureCelsius = Math.round((forecast[1]?.temp?.day ?? 0) - 273.15);
+                document.getElementById("temperature-d").textContent = `${temperatureCelsius}°C`;
             } else {
                 document.getElementById("temperature-d").textContent = "N/A";
             }
+
 
             const weatherImage = document.getElementById("weather-image");
             const weatherDescription = document.getElementById("text-2");

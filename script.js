@@ -4,9 +4,16 @@ function updateWeather(ville) {
         .then(data => {
             console.log(data);
 
-            // Supporte les deux structures : OpenWeatherMap "current" ou "main"
             let temp, humidity, weather, clouds;
-            if (data.main && data.weather) {
+
+            // Cas de l'API OpenWeatherMap 5 day / 3 hour forecast
+            if (data.list && data.list.length > 0) {
+                const now = data.list[0];
+                temp = now.main.temp;
+                humidity = now.main.humidity;
+                weather = now.weather[0];
+                clouds = now.clouds?.all ?? "N/A";
+            } else if (data.main && data.weather) {
                 temp = data.main.temp;
                 humidity = data.main.humidity;
                 weather = data.weather[0];
@@ -21,7 +28,7 @@ function updateWeather(ville) {
                 return;
             }
 
-            document.getElementById("ville-name").textContent = data.name || ville;
+            document.getElementById("ville-name").textContent = (data.city && data.city.name) || data.name || ville;
             document.getElementById("temperature").textContent = Math.round(temp - 273.15);
             document.getElementById("description").textContent = weather.description;
             document.getElementById("nebulosite-totale").textContent = clouds;

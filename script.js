@@ -4,17 +4,28 @@ function updateWeather(ville) {
         .then(data => {
             console.log(data);
 
-            // Affichage des informations météo
-            document.getElementById("ville-name").textContent = data.name; // Nom de la ville
-            document.getElementById("temperature").textContent = Math.round(data.main.temp - 273.15); // Température en °C
-            document.getElementById("description").textContent = data.weather[0].description; // Description météo
-            document.getElementById("nebulosite-totale").textContent = data.clouds.all; // Nébulosité totale
-            document.getElementById("humidite").textContent = data.main.humidity; // Humidité
-            // Les propriétés low, mid, high pour les nuages ne sont pas standard dans l'API OpenWeatherMap
-            // Vous devez les calculer ou les obtenir d'une autre manière si elles existent
-            // document.getElementById("nebulosite-basse").textContent = data.clouds.low;
-            // document.getElementById("nebulosite-moyenne").textContent = data.clouds.mid;
-            // document.getElementById("nebulosite-haute").textContent = data.clouds.high;
+            // Supporte les deux structures : OpenWeatherMap "current" ou "main"
+            let temp, humidity, weather, clouds;
+            if (data.main && data.weather) {
+                temp = data.main.temp;
+                humidity = data.main.humidity;
+                weather = data.weather[0];
+                clouds = data.clouds?.all ?? "N/A";
+            } else if (data.current && data.current.weather) {
+                temp = data.current.temp;
+                humidity = data.current.humidity;
+                weather = data.current.weather[0];
+                clouds = data.current.clouds ?? "N/A";
+            } else {
+                alert("Données météo indisponibles pour cette ville.");
+                return;
+            }
+
+            document.getElementById("ville-name").textContent = data.name || ville;
+            document.getElementById("temperature").textContent = Math.round(temp - 273.15);
+            document.getElementById("description").textContent = weather.description;
+            document.getElementById("nebulosite-totale").textContent = clouds;
+            document.getElementById("humidite").textContent = humidity;
 
             // Affichage des prévisions météo
             const forecast = data.daily;
@@ -83,3 +94,26 @@ document.querySelector("span#actualday-4").innerHTML = `${nextDay4.getDate()} ${
 const nextDay5 = new Date();
 nextDay5.setDate(d.getDate() + 5);
 document.querySelector("span#actualday-5").innerHTML = `${nextDay5.getDate()} ${nextDay5.toLocaleString('default', { month: 'long' })} ${nextDay5.getFullYear()}`;
+
+
+// function displayForecast(forecast) {
+//     for (let i = 1; i <= 5; i++) {
+//         const dayForecast = forecast && forecast[i];
+//         const tempElement = document.getElementById(`temperature-d${i}`);
+//         const descElement = document.getElementById(`description-d${i}`);
+//         if (dayForecast && tempElement && descElement) {
+//             const tempC = Math.round((dayForecast.temp.day ?? 0) - 273.15);
+//             tempElement.textContent = `${tempC}°C`;
+//             descElement.textContent = dayForecast.weather[0].description;
+//         } else if (tempElement && descElement) {
+//             tempElement.textContent = "N/A";
+//             descElement.textContent = "";
+//         }
+//     }
+// }
+
+// // Appel de la fonction displayForecast après la récupération des données météo
+// // Ajoutez ceci à la fin du .then(data => { ... }) dans updateWeather, après le switch :
+// if (forecast) {
+//     displayForecast(forecast);
+// }

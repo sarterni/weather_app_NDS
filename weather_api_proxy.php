@@ -2,7 +2,7 @@
 // weather_api_proxy.php
 
 // Étape 2: Définir la clé d'API
-$apiKey = "414f550b460063e8d5f1216f6e0c041a";
+$apiKey = "bbe934017264521518f7481e7a99b9df";
 
 // Étape 3: Recevoir le paramètre 'ville'
 $ville = $_GET['ville'];

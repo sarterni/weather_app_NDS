@@ -6,7 +6,6 @@ function updateWeather(ville) {
 
             let temp, humidity, weather, clouds;
 
-            // Cas de l'API OpenWeatherMap 5 day / 3 hour forecast
             if (data.list && data.list.length > 0) {
                 const now = data.list[0];
                 temp = now.main.temp;
@@ -34,11 +33,9 @@ function updateWeather(ville) {
             document.getElementById("nebulosite-totale").textContent = clouds;
             document.getElementById("humidite").textContent = humidity;
 
-            // Affichage des prévisions météo
             const forecast = data.daily;
 
-            // Affichage de la température du lendemain
-            if (forecast && forecast.length > 1) { // Vérifier qu'il y a au moins deux jours de prévisions
+            if (forecast && forecast.length > 1) {   // Assurez-vous que le tableau de prévisions a au moins 2 éléments
                 const temperatureCelsius = Math.round((forecast[1]?.temp?.day ?? 0) - 273.15);
                 document.getElementById("temperature-d").textContent = `${temperatureCelsius}°C`;
             } else {
@@ -49,7 +46,6 @@ function updateWeather(ville) {
             const weatherImage = document.getElementById("weather-image");
             const weatherDescription = document.getElementById("text-2");
 
-            // Affichage de l'image météo et de la description
             switch (data.weather[0].main) {
                 case "Clear":
                     weatherImage.src = "description_clear_sky.jpg";
@@ -74,11 +70,41 @@ function updateWeather(ville) {
                     weatherDescription.textContent = data.weather[0].main;
                     break;
             }
+
+            // Après avoir affiché la météo actuelle :
+            // Générer la météo pour les 5 prochains jours
+            const days = {};
+            data.list.forEach(item => {
+                const date = new Date(item.dt_txt);
+                const day = date.getDate();
+                const hour = date.getHours();
+                // On prend la prévision de midi (12h) pour chaque jour
+                if (!days[day] && hour === 12) {
+                    days[day] = item;
+                }
+            });
+
+            // Affichage pour les 5 prochains jours
+            let dayIndex = 1;
+            for (let key in days) {
+                if (dayIndex > 5) break;
+                const item = days[key];
+                const tempC = Math.round(item.main.temp - 273.15);
+                document.getElementById(`day${dayIndex}-temperature`).textContent = tempC;
+                document.getElementById(`day${dayIndex}-description`).textContent = item.weather[0].description;
+                document.getElementById(`day${dayIndex}-humidite`).textContent = item.main.humidity;
+                dayIndex++;
+            }
+            // Si pas de données pour certains jours, afficher N/A
+            for (; dayIndex <= 5; dayIndex++) {
+                document.getElementById(`day${dayIndex}-temperature`).textContent = "N/A";
+                document.getElementById(`day${dayIndex}-description`).textContent = "";
+                document.getElementById(`day${dayIndex}-humidite`).textContent = "N/A";
+            }
         })
         .catch(error => console.error("Erreur : ", error));
 }
 
-// Mise à jour de la date actuelle
 const d = new Date();
 document.getElementById("current-d").innerHTML = d;
 
@@ -103,24 +129,22 @@ nextDay5.setDate(d.getDate() + 5);
 document.querySelector("span#actualday-5").innerHTML = `${nextDay5.getDate()} ${nextDay5.toLocaleString('default', { month: 'long' })} ${nextDay5.getFullYear()}`;
 
 
-// function displayForecast(forecast) {
-//     for (let i = 1; i <= 5; i++) {
-//         const dayForecast = forecast && forecast[i];
-//         const tempElement = document.getElementById(`temperature-d${i}`);
-//         const descElement = document.getElementById(`description-d${i}`);
-//         if (dayForecast && tempElement && descElement) {
-//             const tempC = Math.round((dayForecast.temp.day ?? 0) - 273.15);
-//             tempElement.textContent = `${tempC}°C`;
-//             descElement.textContent = dayForecast.weather[0].description;
-//         } else if (tempElement && descElement) {
-//             tempElement.textContent = "N/A";
-//             descElement.textContent = "";
-//         }
-//     }
-// }
+function displayForecast(forecast) {
+    for (let i = 1; i <= 5; i++) {
+        const dayForecast = forecast && forecast[i];
+        const tempElement = document.getElementById(`temperature-d${i}`);
+        const descElement = document.getElementById(`description-d${i}`);
+        if (dayForecast && tempElement && descElement) {
+            const tempC = Math.round((dayForecast.temp.day ?? 0) - 273.15);
+            tempElement.textContent = `${tempC}°C`;
+            descElement.textContent = dayForecast.weather[0].description;
+        } else if (tempElement && descElement) {
+            tempElement.textContent = "N/A";
+            descElement.textContent = "";
+        }
+    }
+}
 
-// // Appel de la fonction displayForecast après la récupération des données météo
-// // Ajoutez ceci à la fin du .then(data => { ... }) dans updateWeather, après le switch :
-// if (forecast) {
-//     displayForecast(forecast);
-// }
+if (forecast) {
+    displayForecast(forecast);
+}
